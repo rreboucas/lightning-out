@@ -42,8 +42,8 @@ function setupLightning(callback) {
 
 function createChatterFeed(type, subjectId) {
     setupLightning(function() {
-		$Lightning.createComponent("roreblciflw3:IFollowList", {type: type, subjectId: subjectId}, "chatterFeed");
-		$Lightning.createComponent("roreblcloghist:UsersLoginHistory", {type: type, subjectId: subjectId}, "loginHistory"); 
+		$Lightning.createComponent("c:CandidatesLComponent", {type: type, subjectId: subjectId}, "chatterFeed");
+		$Lightning.createComponent("c:CandidateDetailPhoto", {type: type, subjectId: subjectId}, "loginHistory"); 
 		//$Lightning.createComponent("c:TestComponent", {type: type, subjectId: subjectId}, "chatterFeed"); 
 		//$Lightning.createComponent("forceChatter:feed", {type: type, subjectId: subjectId}, "chatterFeed"); 
     });
