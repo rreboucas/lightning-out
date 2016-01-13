@@ -1,5 +1,4 @@
-var express = require('express')
-, cors = require('cors');
+var express = require('express');
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
