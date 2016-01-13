@@ -1,4 +1,11 @@
-var express = require('express');
+var express = require('express')
+  , cors = require('cors')
+  , app = express();
+
+var corsOptions = {
+  origin: 'http://example.com'
+};
+
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
@@ -24,7 +31,8 @@ app.use(express.static(__dirname + '/public'));
 //  next();
 //});
 
-app.get('/', function(req, res) {
+app.get('/', cors(corsOptions), function(req, res) {
+	res.json({msg: 'This is CORS-enabled for only example.com.'});
 	res.render('index', {appId: process.env.APPID, loApp: process.env.LOAPP});
 });
 
