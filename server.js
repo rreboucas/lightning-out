@@ -16,7 +16,7 @@ var https_port = process.env.HTTPS_PORT || parseInt(port) + 1;
 
 app.set('view engine', 'ejs');
 //
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
