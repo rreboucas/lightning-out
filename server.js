@@ -14,9 +14,7 @@ var app = express();
 var port = process.env.PORT || 5000;
 var https_port = process.env.HTTPS_PORT || parseInt(port) + 1;
 
-app.set('view engine', 'ejs');
-//
-app.use(express.static(__dirname + '/public'));
+
 
 //app.use(express.static(__dirname + '/public'), function(req, res, next) {
 //  res.header("Access-Control-Allow-Origin", "*");
@@ -29,6 +27,10 @@ app.all('/', function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
  });
+
+app.set('view engine', 'ejs');
+//
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res, next) {
 	res.render('index', {appId: process.env.APPID, loApp: process.env.LOAPP});
