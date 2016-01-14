@@ -16,20 +16,30 @@ var https_port = process.env.HTTPS_PORT || parseInt(port) + 1;
 
 app.set('view engine', 'ejs');
 //
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/public'), function(req, res, next) {
+//app.use(express.static(__dirname + '/public'), function(req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  next();
+//});
+
+app.all('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
-});
+ });
 
-app.get('/', function(req, res) {
+app.get('/', function(req, res, next) {
 	res.render('index', {appId: process.env.APPID, loApp: process.env.LOAPP});
 });
 
 app.get('/oauthcallback', function(req, res) {
 	res.render('oauthcallback', {});
+});
+
+app.post('/', function(req, res, next) {
+ // Handle the post for this route
 });
 
 // Create an HTTP service
